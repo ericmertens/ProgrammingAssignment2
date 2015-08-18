@@ -5,35 +5,32 @@
 ## Write a short comment describing this function
 
 makeCacheMatrix <- function(x = matrix()) {
-
-}
-makeVector <- function(x = numeric()) {
-        m <- NULL
+        im <- NULL
         set <- function(y) {
                 x <<- y
-                m <<- NULL
+                im <<- NULL
         }
         get <- function() x
-        setmean <- function(mean) m <<- mean
-        getmean <- function() m
+        setinvmat <- function(solve) im <<- solve
+        getinvmat <- function() im
         list(set = set, get = get,
-             setmean = setmean,
-             getmean = getmean)
+             setinvmat = setinvmat,
+             getinvmat = getinvmat)
 }
 
 ## Write a short comment describing this function
 
 cacheSolve <- function(x, ...) {
         ## Return a matrix that is the inverse of 'x'
-}
-cachemean <- function(x, ...) {
-        m <- x$getmean()
-        if(!is.null(m)) {
+        im <- x$getinvmat()
+        if(!is.null(im)) {
                 message("getting cached data")
-                return(m)
+                return(im)
         }
         data <- x$get()
-        m <- mean(data, ...)
-        x$setmean(m)
-        m
+        im <- solve(data, ...)
+        x$setinvmat(im)
+        im
 }
+
+## Use c=rbind(c(1, -1/4), c(-1/4, 1)) as test matrix
