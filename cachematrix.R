@@ -48,7 +48,7 @@ cacheSolve <- function(x, ...) {
 ## cm <- makeCacheMatrix(c)
 ## c %*% cacheSolve(cm)
 ## the last line should return an identity matrix (2X2)
-##     [,1] [,2]
-##[1,]    1    0
-##[2,]    0    1
-##
+##      [,1] [,2]
+## [1,]    1    0
+## [2,]    0    1
+## 
